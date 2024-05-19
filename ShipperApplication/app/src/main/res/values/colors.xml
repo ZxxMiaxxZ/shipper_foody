@@ -6,5 +6,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="yellow">#fff5f504</color>
+    <color name="blue_grey">#2E4058</color>
+    <color name="grey">#F5F5F5</color>
     <color name="red">#B71C1C</color>
+    <color name="red_1">#F75564</color>
 </resources>
