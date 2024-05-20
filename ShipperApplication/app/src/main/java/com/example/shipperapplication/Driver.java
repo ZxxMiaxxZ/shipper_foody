@@ -12,13 +12,6 @@ public class Driver implements Serializable {
         this.avatar = avatar;
     }
 
-    public String getDisplayname() {
-        return displayname;
-    }
-
-    public void setDisplayname(String displayname) {
-        this.displayname = displayname;
-    }
 
     public String getUsername() {
         return username;
@@ -44,13 +37,7 @@ public class Driver implements Serializable {
         this.password = password;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 
     public String getStatus() {
         return status;
@@ -60,23 +47,16 @@ public class Driver implements Serializable {
         this.status = status;
     }
 
-    public int getOtp() {
-        return otp;
-    }
 
-    public void setOtp(int otp) {
-        this.otp = otp;
-    }
-
+    private Integer id;
     private String avatar;
-    private String displayname;
+    private String name;
     private String username;
     private String email;
     private String password;
-    private String phoneNumber;
+    private String phone;
 
     private String status;
-    private int otp;
 
     public String getToken() {
         return accessToken;
@@ -89,6 +69,38 @@ public class Driver implements Serializable {
     private  String accessToken;
 
     private  String driver_licenseNumber;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
 
     public String getDriver_licenseNumber() {
         return driver_licenseNumber;

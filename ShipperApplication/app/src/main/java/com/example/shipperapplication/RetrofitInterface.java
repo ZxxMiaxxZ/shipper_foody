@@ -21,16 +21,9 @@ public interface RetrofitInterface {
     Call<Driver> verifyOtp(@Body HashMap<String, String> map);
 
     @GET("/api/driver/auth/profile")
-    Call<Driver> getDriverProfile(@Header("Authorization") String token);
+    Call<DriverResponse> getDriverProfile(@Header("Authorization") String authToken);
+
+    @POST("/api/driver/auth/profile")
+    Call<Driver> setDriverProfile(@Body HashMap<String, String> map);
+
 }
-
-
-
-
-
-
-
-
-
-
-

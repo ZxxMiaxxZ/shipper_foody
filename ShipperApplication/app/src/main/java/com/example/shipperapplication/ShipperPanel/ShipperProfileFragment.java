@@ -9,13 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import com.example.shipperapplication.Driver;
+import com.example.shipperapplication.DriverResponse;
 import com.example.shipperapplication.R;
 import com.example.shipperapplication.RetrofitInterface;
 import com.example.shipperapplication.SharedPreferencesManager;
-
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -46,41 +44,43 @@ public class ShipperProfileFragment extends Fragment {
 
         // Get authToken from SharedPreferences
         authToken = SharedPreferencesManager.getInstance(requireContext()).getAuthToken();
-//        Log.d("AuthToken", authToken);
+        Log.d("ShipperProfileFragment", "AuthToken: " + authToken);
 
-        // Initialize Retrofit with OkHttpClient
+        // Initialize Retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        // Create RetrofitInterface instance
         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
         // Call API to get user data
-        Call<Driver> call = retrofitInterface.getDriverProfile("Bearer " + authToken); // Pass token in the header
-        call.enqueue(new Callback<Driver>() {
+        Call<DriverResponse> call = retrofitInterface.getDriverProfile("Bearer " + authToken);
+        call.enqueue(new Callback<DriverResponse>() {
             @Override
-            public void onResponse(Call<Driver> call, Response<Driver> response) {
+            public void onResponse(Call<DriverResponse> call, Response<DriverResponse> response) {
                 if (response.isSuccessful()) {
-                    Driver driver = response.body();
+                    Driver driver = response.body().getDriver();
                     if (driver != null) {
                         // Display data in TextViews
-                        txtDisplayName.setText(driver.getDisplayname());
+                        txtDisplayName.setText(driver.getName());
                         txtUsername.setText(driver.getUsername());
                         txtEmail.setText(driver.getEmail());
                         txtPassword.setText(driver.getPassword());
-                        txtPhone.setText(driver.getPhoneNumber());
+                        txtPhone.setText(driver.getPhone());
                         txtLicenseNumber.setText(driver.getDriver_licenseNumber());
                         txtVehicleType.setText(driver.getVehicleType());
                     }
+                } else {
+                    Log.e("ShipperProfileFragment", "Response error: " + response.message());
+                    // Handle the case where the response is not successful
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<Driver> call, @NonNull Throwable t) {
-                // Handle error
-                Log.e("ShipperProfileFragment", "Error: " + t.getMessage());
+            public void onFailure(Call<DriverResponse> call, Throwable t) {
+                Log.e("ShipperProfileFragment", "API call failed: ", t);
+                // Handle failure
             }
         });
 
