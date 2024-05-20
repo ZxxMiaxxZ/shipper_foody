@@ -25,10 +25,13 @@ public class MainActivity extends AppCompatActivity {
     private MaterialButton btnLogin, btnLinkToRegister, btnForgotPass;
     private TextInputEditText inputUsername, inputPassword;
 
+    private String token;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         inputUsername = findViewById(R.id.username);
         inputPassword = findViewById(R.id.password);
@@ -75,9 +78,10 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Driver> call, Response<Driver> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     Driver result = response.body();
+                    token = result.getToken();
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                     builder.setTitle("Welcome " + result.getUsername())
-                            .setMessage("Email: " + result.getEmail())
+                            .setMessage("Token: " + token)
                             .setPositiveButton("OK", (dialog, which) -> {
                                 // Redirect to ShipperPanelBottomNavigationActivity
                                 Intent intent = new Intent(MainActivity.this, ShipperPanelBottomNavigationActivity.class);

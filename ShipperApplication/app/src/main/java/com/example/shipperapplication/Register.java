@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
@@ -55,15 +54,15 @@ public class Register extends AppCompatActivity {
         String email = inputEmail.getEditText().getText().toString().trim();
         String password = inputPassword.getEditText().getText().toString().trim();
 
-        if (username.isEmpty() || password.isEmpty()) {
-            Toast.makeText(Register.this, "Please fill in both fields", Toast.LENGTH_LONG).show();
+        if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
+            Toast.makeText(Register.this, "Please fill in all fields", Toast.LENGTH_LONG).show();
             return;
         }
 
         HashMap<String, String> map = new HashMap<>();
         map.put("username", username);
         map.put("password", password);
-        map.put("email",email);
+        map.put("email", email);
 
         Call<Driver> call = retrofitInterface.executeRegister(map);
 
@@ -71,7 +70,6 @@ public class Register extends AppCompatActivity {
             @Override
             public void onResponse(Call<Driver> call, Response<Driver> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    Driver result = response.body();
                     // Start VerifyOtpActivity and pass email as an extra
                     Intent intent = new Intent(Register.this, VerifyOtpActivity.class);
                     intent.putExtra("email", email); // Pass email as an extra
@@ -80,12 +78,11 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(Register.this, "Register failed, please try again.", Toast.LENGTH_LONG).show();
                 }
             }
+
             @Override
             public void onFailure(Call<Driver> call, Throwable t) {
                 Toast.makeText(Register.this, "Network error: " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-
     }
-
 }

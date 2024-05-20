@@ -78,6 +78,16 @@ public class Driver implements Serializable {
     private String status;
     private int otp;
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    private  String token;
+
 
 
 }
