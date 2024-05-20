@@ -72,9 +72,10 @@ public class Register extends AppCompatActivity {
             public void onResponse(Call<Driver> call, Response<Driver> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     Driver result = response.body();
-                    Intent intent = new Intent(Register.this, ShipperPanelBottomNavigationActivity.class);
+                    // Start VerifyOtpActivity and pass email as an extra
+                    Intent intent = new Intent(Register.this, VerifyOtpActivity.class);
+                    intent.putExtra("email", email); // Pass email as an extra
                     startActivity(intent);
-                    finish(); // Đóng màn hình hiện tại nếu muốn
                 } else {
                     Toast.makeText(Register.this, "Register failed, please try again.", Toast.LENGTH_LONG).show();
                 }
