@@ -79,14 +79,43 @@ public class Driver implements Serializable {
     private int otp;
 
     public String getToken() {
-        return token;
+        return accessToken;
     }
 
     public void setToken(String token) {
-        this.token = token;
+        this.accessToken = token;
     }
 
-    private  String token;
+    private  String accessToken;
+
+    private  String driver_licenseNumber;
+
+    public String getDriver_licenseNumber() {
+        return driver_licenseNumber;
+    }
+
+    public void setDriver_licenseNumber(String driver_licenseNumber) {
+        this.driver_licenseNumber = driver_licenseNumber;
+    }
+
+    public String getVehicleType() {
+        return vehicleType;
+    }
+
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
+    }
+
+    public String getExperience() {
+        return experience;
+    }
+
+    public void setExperience(String experience) {
+        this.experience = experience;
+    }
+
+    private String vehicleType;
+    private  String experience;
 
 
 

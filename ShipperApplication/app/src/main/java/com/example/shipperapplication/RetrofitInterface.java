@@ -6,6 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface RetrofitInterface {
@@ -19,9 +20,17 @@ public interface RetrofitInterface {
     @POST("/api/driver/otp/verify-otp")
     Call<Driver> verifyOtp(@Body HashMap<String, String> map);
 
-
-
-
-
-
+    @GET("/api/driver/auth/profile")
+    Call<Driver> getDriverProfile(@Header("Authorization") String token);
 }
+
+
+
+
+
+
+
+
+
+
+
