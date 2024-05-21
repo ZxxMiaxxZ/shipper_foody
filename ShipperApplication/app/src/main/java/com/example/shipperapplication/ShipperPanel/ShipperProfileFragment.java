@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +15,8 @@ import com.example.shipperapplication.DriverResponse;
 import com.example.shipperapplication.R;
 import com.example.shipperapplication.RetrofitInterface;
 import com.example.shipperapplication.SharedPreferencesManager;
+import com.google.android.material.textfield.TextInputLayout;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,16 +28,17 @@ public class ShipperProfileFragment extends Fragment {
     private static final String BASE_URL = "http://10.0.2.2:3001/";
     private String authToken;
 
-    TextView txtDisplayName, txtUsername, txtEmail, txtPassword, txtPhone, txtLicenseNumber, txtVehicleType;
+    TextInputLayout txtDisplayName, txtUsername, txtEmail, txtPassword, txtPhone, txtLicenseNumber, txtVehicleType;
 
+
+    TextView btn_Edit;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_shipper_profile, container, false);
-        getActivity().setTitle("Profile");
 
         // Initialize TextViews
-        txtDisplayName = v.findViewById(R.id.displayname);
+        txtDisplayName = txtDisplayName.findViewById(R.id.displayname);
         txtUsername = v.findViewById(R.id.username);
         txtEmail = v.findViewById(R.id.email);
         txtPassword = v.findViewById(R.id.password);
@@ -63,13 +67,13 @@ public class ShipperProfileFragment extends Fragment {
                     Driver driver = response.body().getDriver();
                     if (driver != null) {
                         // Display data in TextViews
-                        txtDisplayName.setText(driver.getName());
-                        txtUsername.setText(driver.getUsername());
-                        txtEmail.setText(driver.getEmail());
-                        txtPassword.setText(driver.getPassword());
-                        txtPhone.setText(driver.getPhone());
-                        txtLicenseNumber.setText(driver.getDriver_licenseNumber());
-                        txtVehicleType.setText(driver.getVehicleType());
+                        txtDisplayName.getEditText().setText(driver.getName());
+                        txtUsername.getEditText().setText(driver.getUsername());
+                        txtEmail.getEditText().setText(driver.getEmail());
+                        txtPassword.getEditText().setText(driver.getPassword());
+                        txtPhone.getEditText().setText(driver.getPhone());
+                        txtLicenseNumber.getEditText().setText(driver.getDriver_licenseNumber());
+                        txtVehicleType.getEditText().setText(driver.getVehicleType());
                     }
                 } else {
                     Log.e("ShipperProfileFragment", "Response error: " + response.message());
@@ -83,7 +87,8 @@ public class ShipperProfileFragment extends Fragment {
                 // Handle failure
             }
         });
-
         return v;
+
     }
+
 }

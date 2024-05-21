@@ -8,6 +8,7 @@ import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 public interface RetrofitInterface {
 
@@ -23,7 +24,7 @@ public interface RetrofitInterface {
     @GET("/api/driver/auth/profile")
     Call<DriverResponse> getDriverProfile(@Header("Authorization") String authToken);
 
-    @POST("/api/driver/auth/profile")
+    @PUT("/api/driver/auth/profile")
     Call<Driver> setDriverProfile(@Body HashMap<String, String> map);
 
 }
