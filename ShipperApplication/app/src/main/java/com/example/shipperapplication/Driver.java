@@ -70,6 +70,18 @@ public class Driver implements Serializable {
 
     private  String driver_licenseNumber;
 
+
+
+    private String cicardNumber;
+
+    public String getCicardNumber() {
+        return cicardNumber;
+    }
+
+    public void setCicardNumber(String cicardNumber) {
+        this.cicardNumber = cicardNumber;
+    }
+
     public Integer getId() {
         return id;
     }
