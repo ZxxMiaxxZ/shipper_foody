@@ -1,19 +1,27 @@
 package com.example.shipperapplication.ShipperPanel;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.shipperapplication.Driver;
 import com.example.shipperapplication.DriverResponse;
+import com.example.shipperapplication.MainActivity;
 import com.example.shipperapplication.R;
 import com.example.shipperapplication.RetrofitInterface;
 import com.example.shipperapplication.SharedPreferencesManager;
+import com.example.shipperapplication.ShipperPanelBottomNavigationActivity;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,8 +34,14 @@ public class ShipperProfileFragment extends Fragment {
     private static final String BASE_URL = "http://10.0.2.2:3001/";
     private String authToken;
 
+    private Button btnEdit;
+
     TextInputEditText txtDisplayName, txtUsername, txtEmail, txtPhone, txtLicenseNumber, txtVehicleType, txtCicardNumber;
 
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,15 +56,13 @@ public class ShipperProfileFragment extends Fragment {
         txtVehicleType = v.findViewById(R.id.vehicleType_edit);
         txtCicardNumber = v.findViewById(R.id.cicard_number_edit);
 
+        btnEdit =v.findViewById(R.id.edit_info);
         // Get authToken from SharedPreferences
         authToken = SharedPreferencesManager.getInstance(requireContext()).getAuthToken();
         Log.d("ShipperProfileFragment", "AuthToken: " + authToken);
 
         // Initialize Retrofit
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+
 
         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
@@ -89,6 +101,68 @@ public class ShipperProfileFragment extends Fragment {
                 Log.e("ShipperProfileFragment", "API call failed: ", t);
             }
         });
+
+
+        btnEdit.setOnClickListener(v1 -> {
+            handleEditProfile();
+        });
         return v;
+    }
+
+    private void handleEditProfile() {
+        String displayName = txtDisplayName.getText().toString().trim();
+        String username = txtUsername.getText().toString().trim();
+        String email = txtEmail.getText().toString().trim();
+        String phone = txtPhone.getText().toString().trim();
+        String licenseNumber = txtLicenseNumber.getText().toString().trim();
+        String vehicleType = txtVehicleType.getText().toString().trim();
+        String cicardNumber = txtCicardNumber.getText().toString().trim();
+
+//        if (displayName.isEmpty() || username.isEmpty() || email.isEmpty() || phone.isEmpty() ||
+//                licenseNumber.isEmpty() || vehicleType.isEmpty() || cicardNumber.isEmpty()) {
+//            Toast.makeText(getContext(), "Please fill in all fields", Toast.LENGTH_LONG).show();
+//            return;
+//        }
+
+        authToken = SharedPreferencesManager.getInstance(requireContext()).getAuthToken();
+
+        // Initialize Retrofit
+
+
+        retrofitInterface = retrofit.create(RetrofitInterface.class);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("name", displayName);
+        map.put("username", username);
+        map.put("email", email);
+        map.put("phone", phone);
+        map.put("licenseNumber", licenseNumber);
+        map.put("vehicleType", vehicleType);
+        map.put("cicard_number", cicardNumber);
+
+
+        Call<Driver> call2 = retrofitInterface.updateDriverProfile("Bearer " + authToken, map);
+
+        call2.enqueue(new Callback<Driver>() {
+            @Override
+            public void onResponse(Call<Driver> call2, Response<Driver> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Driver result = response.body();
+
+                    // Save authToken into SharedPreferences
+                    Toast.makeText(getContext(), "Profile updated", Toast.LENGTH_LONG).show();
+                    // Navigate to ShipperPanelBottomNavigationActivity
+
+                } else if (response.code() == 401) {
+                    Toast.makeText(getContext(), "Wrong Credentials", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getContext(), "Profile update failed, please try again.", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Driver> call, Throwable t) {
+                Toast.makeText(getContext(), "Request failed: " + t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

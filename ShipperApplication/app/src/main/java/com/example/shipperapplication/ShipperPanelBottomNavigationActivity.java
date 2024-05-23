@@ -28,6 +28,7 @@ public class ShipperPanelBottomNavigationActivity extends AppCompatActivity impl
         }
     }
 
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment = null;

@@ -24,7 +24,8 @@ public interface RetrofitInterface {
     @GET("/api/driver/auth/profile")
     Call<DriverResponse> getDriverProfile(@Header("Authorization") String authToken);
 
-    @PUT("/api/driver/auth/profile")
-    Call<Driver> setDriverProfile(@Body HashMap<String, String> map);
+
+    @PUT("api/driver/auth/profile")
+    Call<Driver> updateDriverProfile(@Header("Authorization") String token, @Body HashMap<String, String> map);
 
 }

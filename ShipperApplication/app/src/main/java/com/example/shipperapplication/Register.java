@@ -1,12 +1,20 @@
 package com.example.shipperapplication;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.HashMap;
 
@@ -23,6 +31,9 @@ public class Register extends AppCompatActivity {
     private MaterialButton btnRegister, btnGoToLogin;
     private TextInputLayout inputName, inputEmail, inputPassword;
 
+    private String fcmToken;
+
+    private  HashMap<String, String> map = new HashMap<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +58,9 @@ public class Register extends AppCompatActivity {
             Intent intent = new Intent(Register.this, MainActivity.class);
             startActivity(intent);
         });
+
+        getFCMToken();
+
     }
 
     private void handleRegister() {
@@ -59,10 +73,11 @@ public class Register extends AppCompatActivity {
             return;
         }
 
-        HashMap<String, String> map = new HashMap<>();
+        //HashMap<String, String> map = new HashMap<>();
         map.put("username", username);
         map.put("password", password);
         map.put("email", email);
+        map.put("fcm_token",fcmToken);
 
         Call<Driver> call = retrofitInterface.executeRegister(map);
 
@@ -70,6 +85,9 @@ public class Register extends AppCompatActivity {
             @Override
             public void onResponse(Call<Driver> call, Response<Driver> response) {
                 if (response.isSuccessful() && response.body() != null) {
+                    Driver result = response.body();
+
+                    //map.put("fcm_token",fcmToken);
                     // Start VerifyOtpActivity and pass email as an extra
                     Intent intent = new Intent(Register.this, VerifyOtpActivity.class);
                     intent.putExtra("email", email); // Pass email as an extra
@@ -84,5 +102,26 @@ public class Register extends AppCompatActivity {
                 Toast.makeText(Register.this, "Network error: " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+    private void getFCMToken() {
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "Fetching FCM token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM token
+                        fcmToken = task.getResult();
+
+                        // Log và hiển thị token
+                        Log.d(TAG, "FCM Token: " + fcmToken);
+
+                        // Thêm fcm_token vào map
+                       // map.put("fcm_token", fcmToken);
+                    }
+                });
     }
 }
