@@ -1,6 +1,5 @@
 package com.example.shipperapplication.ShipperPanel;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,11 +13,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.shipperapplication.Driver;
 import com.example.shipperapplication.DriverResponse;
-import com.example.shipperapplication.MainActivity;
 import com.example.shipperapplication.R;
 import com.example.shipperapplication.RetrofitInterface;
 import com.example.shipperapplication.SharedPreferencesManager;
-import com.example.shipperapplication.ShipperPanelBottomNavigationActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.HashMap;
@@ -59,7 +56,6 @@ public class ShipperProfileFragment extends Fragment {
         btnEdit =v.findViewById(R.id.edit_info);
         // Get authToken from SharedPreferences
         authToken = SharedPreferencesManager.getInstance(requireContext()).getAuthToken();
-        Log.d("ShipperProfileFragment", "AuthToken: " + authToken);
 
         // Initialize Retrofit
 

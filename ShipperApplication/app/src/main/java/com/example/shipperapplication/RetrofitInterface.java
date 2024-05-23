@@ -1,6 +1,7 @@
 package com.example.shipperapplication;
 
 import java.util.HashMap;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -27,5 +28,9 @@ public interface RetrofitInterface {
 
     @PUT("api/driver/auth/profile")
     Call<Driver> updateDriverProfile(@Header("Authorization") String token, @Body HashMap<String, String> map);
+
+    @GET("/api/driver/orders")
+    Call<List<OrderDetails>> getOrders(@Header("Authorization") String authToken);
+
 
 }
