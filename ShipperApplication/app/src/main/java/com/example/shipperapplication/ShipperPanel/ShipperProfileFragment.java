@@ -11,10 +11,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import com.example.shipperapplication.Driver;
-import com.example.shipperapplication.DriverResponse;
+import com.example.shipperapplication.model.Driver;
+import com.example.shipperapplication.model.DriverResponse;
 import com.example.shipperapplication.R;
-import com.example.shipperapplication.RetrofitInterface;
+import com.example.shipperapplication.api.RetrofitInterface;
 import com.example.shipperapplication.SharedPreferencesManager;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -28,7 +28,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ShipperProfileFragment extends Fragment {
     private RetrofitInterface retrofitInterface;
-    private static final String BASE_URL = "http://10.0.2.2:3001/";
+    //private static final String BASE_URL = "http://10.0.2.2:3001/";
+    private static final String BASE_URL = "http://192.168.1.7:3001/";
     private String authToken;
 
     private Button btnEdit;

@@ -1,14 +1,23 @@
 package com.example.shipperapplication;
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.example.shipperapplication.api.RetrofitInterface;
+import com.example.shipperapplication.model.Driver;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import java.util.HashMap;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,9 +27,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     private RetrofitInterface retrofitInterface;
-    private static final String BASE_URL = "http://10.0.2.2:3001/";
+    //private static final String BASE_URL = "http://10.0.2.2:3001/";
+    private static final String BASE_URL = "http://192.168.1.7:3001/";
     private MaterialButton btnLogin, btnLinkToRegister, btnForgotPass;
     private TextInputEditText inputUsername, inputPassword;
+
+    private String fcmToken;
+    HashMap<String, String> map = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         retrofitInterface = retrofit.create(RetrofitInterface.class);
+
+        getFCMToken();
 
         btnLogin.setOnClickListener(v -> handleLogin());
 
@@ -61,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        HashMap<String, String> map = new HashMap<>();
         map.put("username", username);
         map.put("password", password);
 
@@ -74,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     Driver result = response.body();
                     String authToken = result.getToken();
                     Log.d("AuthToken", authToken);
+
 
                     // Lưu authToken vào SharedPreferences
                     SharedPreferencesManager.getInstance(MainActivity.this).saveAuthToken(authToken);
@@ -99,5 +114,37 @@ public class MainActivity extends AppCompatActivity {
     private void handleForgotPassword() {
         // Implement your forgot password functionality here
         Toast.makeText(MainActivity.this, "Forgot password feature coming soon!", Toast.LENGTH_LONG).show();
+    }
+
+    private void getFCMToken() {
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (task.isSuccessful()) {
+                            // Get new FCM token
+                            fcmToken = task.getResult();
+
+                            // Log và hiển thị token
+                            Log.d(TAG, "FCM Token: " + fcmToken);
+
+                            // Thêm fcm_token vào map
+                            map.put("fcm_token", fcmToken);
+
+                            // Check if activity is not destroyed
+                            if (!isFinishing() && !isDestroyed()) {
+                                // Update UI or perform any other actions if necessary
+                            }
+                        } else {
+                            // Handle errors
+                            Exception exception = task.getException();
+                            if (exception != null) {
+                                Log.w(TAG, "Fetching FCM token failed", exception);
+                            } else {
+                                Log.w(TAG, "Fetching FCM token failed with no exception");
+                            }
+                        }
+                    }
+                });
     }
 }

@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.shipperapplication.api.RetrofitInterface;
+import com.example.shipperapplication.model.Driver;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
@@ -31,7 +33,6 @@ public class Register extends AppCompatActivity {
     private MaterialButton btnRegister, btnGoToLogin;
     private TextInputLayout inputName, inputEmail, inputPassword;
 
-    private String fcmToken;
 
     private  HashMap<String, String> map = new HashMap<>();
     @Override
@@ -59,7 +60,6 @@ public class Register extends AppCompatActivity {
             startActivity(intent);
         });
 
-        getFCMToken();
 
     }
 
@@ -77,7 +77,6 @@ public class Register extends AppCompatActivity {
         map.put("username", username);
         map.put("password", password);
         map.put("email", email);
-        map.put("fcm_token",fcmToken);
 
         Call<Driver> call = retrofitInterface.executeRegister(map);
 
@@ -87,8 +86,7 @@ public class Register extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     Driver result = response.body();
 
-                    //map.put("fcm_token",fcmToken);
-                    // Start VerifyOtpActivity and pass email as an extra
+                    //Start VerifyOtpActivity and pass email as an extra
                     Intent intent = new Intent(Register.this, VerifyOtpActivity.class);
                     intent.putExtra("email", email); // Pass email as an extra
                     startActivity(intent);
@@ -102,26 +100,5 @@ public class Register extends AppCompatActivity {
                 Toast.makeText(Register.this, "Network error: " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-    }
-    private void getFCMToken() {
-        FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(new OnCompleteListener<String>() {
-                    @Override
-                    public void onComplete(@NonNull Task<String> task) {
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "Fetching FCM token failed", task.getException());
-                            return;
-                        }
-
-                        // Get new FCM token
-                        fcmToken = task.getResult();
-
-                        // Log và hiển thị token
-                        Log.d(TAG, "FCM Token: " + fcmToken);
-
-                        // Thêm fcm_token vào map
-                       // map.put("fcm_token", fcmToken);
-                    }
-                });
     }
 }
