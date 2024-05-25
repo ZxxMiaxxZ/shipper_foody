@@ -35,12 +35,17 @@ public class ChatFragment extends Fragment {
     private ChatRoomAdapter adapter;
     private ArrayList<ChatRoom> chatRoomList;
     private DatabaseReference chatRoomsRef;
+    private String user_id;
+    private String delivery_id;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chat, container, false);
-
+        Bundle arguments = getArguments();
+        if (arguments != null) {
+            delivery_id=arguments.getString("delivery_id");
+        }
         recyclerView = view.findViewById(R.id.list_room);
         chatRoomList = new ArrayList<>();
         adapter = new ChatRoomAdapter(getContext(), chatRoomList, new ChatRoomAdapter.OnItemClickListener() {
@@ -61,7 +66,7 @@ public class ChatFragment extends Fragment {
                 chatRoomList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     ChatRoom chatRoom = snapshot.getValue(ChatRoom.class);
-                    if (chatRoom != null && chatRoom.getParticipants().containsKey("user1")) {
+                    if (chatRoom != null && chatRoom.getParticipants().containsKey(delivery_id)) {
                         chatRoom.setId(snapshot.getKey()); // Set the ID of the chat room
                         chatRoomList.add(chatRoom);
                     }

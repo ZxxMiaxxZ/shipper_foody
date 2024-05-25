@@ -3,7 +3,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.shipperapplication.R;
@@ -15,14 +17,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class ShipperPanelBottomNavigationActivity extends AppCompatActivity implements BottomNavigationView.OnItemSelectedListener {
-
+    private String delivery_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shipper_panel_bottom_navigation);
         BottomNavigationView navigationView = findViewById(R.id.shipper_bottom_navigation);
         navigationView.setOnItemSelectedListener(this);
-
+        android.content.Intent intent = getIntent();
+        if (intent != null) {
+            delivery_id = intent.getStringExtra("delivery_id");
+        }
         // Set default fragment
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new ShipperHomeFragment()).commit();
@@ -40,7 +45,10 @@ public class ShipperPanelBottomNavigationActivity extends AppCompatActivity impl
             case R.id.pendingOrder:
                 fragment = new ShipperPendingOrderFragment();
                 break;
-            case R.id.Order:
+            case R.id.chat:
+                Bundle args = new Bundle();
+                args.putString("delivery_id", delivery_id);
+                fragment.setArguments(args);
                 fragment = new ChatFragment();
                 break;
             case R.id.shipperProfile:

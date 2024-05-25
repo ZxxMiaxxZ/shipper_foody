@@ -65,12 +65,12 @@ public class ShipperPendingOrderFragment extends Fragment {
 
     private int orderid;
     private String locationShipper;
-
+    private String user_id;
+    private String delivery_id;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_shipper_pendingorders, container, false);
-
         edit_username = v.findViewById(R.id.userNameTxt);
         edit_phone = v.findViewById(R.id.phoneTxt);
         edit_location_cus = v.findViewById(R.id.locationTxtCus);
@@ -119,6 +119,8 @@ public class ShipperPendingOrderFragment extends Fragment {
                         orderid = orderDetails.getId();
                         Item item = orderDetails.getItem();
 
+                        delivery_id=String.valueOf(orderDetails.getDelivery_id());
+                        user_id=String.valueOf(orderDetails.getUser_id());
                         // Display order details on the UI
                         edit_username.setText(orderDetails.getReceiver_name());
                         edit_location_cus.setText(orderDetails.getTo_address());
@@ -179,7 +181,7 @@ public class ShipperPendingOrderFragment extends Fragment {
                 Toast.makeText(requireContext(), "Failed to accept order: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        createChatRoomAndAddParticipants("user1","user2");
+        createChatRoomAndAddParticipants(user_id,delivery_id);
     }
     private void showAccepttOrderInfo() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());

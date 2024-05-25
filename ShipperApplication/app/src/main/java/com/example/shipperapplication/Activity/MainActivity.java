@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
                     // Chuyển sang màn hình ShipperPanelActivity
                     Intent intent = new Intent(MainActivity.this, ShipperPanelBottomNavigationActivity.class);
+                    intent.putExtra("delivery_id",String.valueOf(result.getId()));
                     startActivity(intent);
                     finish();
                 } else if (response.code() == 401) {
