@@ -20,7 +20,7 @@
             android:name=".VerifyOtpActivity"
             android:exported="false" />
         <activity
-            android:name=".ShipperPanelBottomNavigationActivity"
+            android:name=".ShipperPanel.ShipperPanelBottomNavigationActivity"
             android:exported="false"/>
         <activity
             android:name=".Register"

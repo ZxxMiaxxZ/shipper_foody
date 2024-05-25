@@ -23,7 +23,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.shipperapplication.MainActivity;
 import com.example.shipperapplication.R;
+import com.example.shipperapplication.Register;
 import com.example.shipperapplication.SharedPreferencesManager;
 import com.example.shipperapplication.api.RetrofitInterface;
 import com.example.shipperapplication.model.Item;
@@ -50,7 +52,8 @@ public class ShipperPendingOrderFragment extends Fragment {
 
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
 
-    private static final String BASE_URL = "http://10.0.2.2:3001/";
+    //private static final String BASE_URL = "http://10.0.2.2:3001/";
+    private static final String BASE_URL = "http://192.168.1.7:3001/";
     private TextView edit_username, edit_phone, edit_location_cus, edit_location_res, edit_note, edit_total;
     private Button btn_Accept, btn_Reject;
     private String authToken;
@@ -134,12 +137,13 @@ public class ShipperPendingOrderFragment extends Fragment {
     private void handleReject() {
         HashMap<String, Integer> map = new HashMap<>();
         map.put("orderId", orderid);
-        Call<OrderDetails> call = retrofitInterface.acceptOrder("Bearer " + authToken, map);
+        Call<OrderDetails> call = retrofitInterface.rejectOrder("Bearer " + authToken, map);
 
         call.enqueue(new Callback<OrderDetails>() {
             @Override
             public void onResponse(Call<OrderDetails> call, Response<OrderDetails> response) {
                 showRejecttOrderInfo();
+                navigateToHomeFragment();
             }
 
             @Override
@@ -297,6 +301,13 @@ public class ShipperPendingOrderFragment extends Fragment {
             }
         }
     }
+    private void navigateToHomeFragment() {
+        requireActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frame_container, new ShipperHomeFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
 
 
 }

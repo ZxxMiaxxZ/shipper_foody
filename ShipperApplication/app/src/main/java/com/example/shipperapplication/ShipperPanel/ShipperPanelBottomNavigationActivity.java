@@ -1,4 +1,4 @@
-package com.example.shipperapplication;
+package com.example.shipperapplication.ShipperPanel;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.shipperapplication.R;
 import com.example.shipperapplication.ShipperPanel.ShipperHomeFragment;
 import com.example.shipperapplication.ShipperPanel.ShipperOrderFragment;
 import com.example.shipperapplication.ShipperPanel.ShipperPendingOrderFragment;
