@@ -1,0 +1,198 @@
+[
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.shipperapplication.app-main-40:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_ic_edit.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/ic_edit.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_ic_arrow_back.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/ic_arrow_back.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_img_1.png.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/img_1.png"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_ic_profile.png.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/ic_profile.png"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_lock.png.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/lock.png"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_ic_person.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/ic_person.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_ic_lock.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/ic_lock.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_image_user_infor.jpg.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/image_user_infor.jpg"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.shipperapplication.app-main-40:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/menu_shipper.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/menu/shipper.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/menu_logout.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/menu/logout.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.shipperapplication.app-main-40:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_ic_pending.png.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/ic_pending.png"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_diego_ph.png.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/diego_ph.png"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.shipperapplication.app-main-40:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/layout_fragment_shipper_home.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/layout/fragment_shipper_home.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.shipperapplication.app-main-40:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_ic_email.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/ic_email.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/layout_activity_main.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/layout_fragment_shipper_pendingorders.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/layout/fragment_shipper_pendingorders.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_avatar.png.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/avatar.png"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/layout_verify_otp.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/layout/verify_otp.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/layout_viewholder_order.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/layout/viewholder_order.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_ic_home.png.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/ic_home.png"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.shipperapplication.app-main-40:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/layout_toolbar.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/layout/toolbar.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_img.png.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/img.png"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_bg_btn.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/bg_btn.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.shipperapplication.app-main-40:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_btn_login.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/btn_login.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/layout_activity_shipper_panel_bottom_navigation.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/layout/activity_shipper_panel_bottom_navigation.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/layout_fragment_shipper_profile.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/layout/fragment_shipper_profile.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.shipperapplication.app-main-40:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.shipperapplication.app-main-40:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/layout_fragment_shipper_orders.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/layout/fragment_shipper_orders.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_img_2.png.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/img_2.png"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/layout_activity_register.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/layout/activity_register.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.shipperapplication.app-main-40:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_logo.png.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/logo.png"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/xml_backup_rules.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_red_button_background.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/red_button_background.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_ic_order_24.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/ic_order_24.xml"
+    },
+    {
+        "merged": "com.example.shipperapplication.app-merged_res-38:/drawable_btn_signup.xml.flat",
+        "source": "com.example.shipperapplication.app-main-40:/drawable/btn_signup.xml"
+    }
+]
