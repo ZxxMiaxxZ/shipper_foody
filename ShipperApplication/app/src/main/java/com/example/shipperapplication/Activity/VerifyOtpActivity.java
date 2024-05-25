@@ -1,4 +1,4 @@
-package com.example.shipperapplication;
+package com.example.shipperapplication.Activity;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.shipperapplication.R;
 import com.example.shipperapplication.api.RetrofitInterface;
 import com.example.shipperapplication.model.Driver;
 import com.google.android.material.button.MaterialButton;
@@ -24,7 +25,8 @@ public class VerifyOtpActivity extends AppCompatActivity {
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private static final String BASE_URL = "http://10.0.2.2:3001/";
+    //private static final String BASE_URL = "http://10.0.2.2:3001/";
+    private static final String BASE_URL = "http://192.168.1.2:3001/";
     private MaterialButton btnVerify;
     private TextInputLayout txtVerify;
 

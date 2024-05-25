@@ -1,4 +1,4 @@
-package com.example.shipperapplication;
+package com.example.shipperapplication.Activity;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -1,4 +1,4 @@
-package com.example.shipperapplication;
+package com.example.shipperapplication.Activity;
 import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
@@ -10,7 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+<<<<<<< HEAD:ShipperApplication/app/src/main/java/com/example/shipperapplication/MainActivity.java
 import com.example.shipperapplication.ShipperPanel.ShipperPanelBottomNavigationActivity;
+=======
+import com.example.shipperapplication.R;
+>>>>>>> 9a86aa0dc5c2704c6fc50fc9f3e900684602b9df:ShipperApplication/app/src/main/java/com/example/shipperapplication/Activity/MainActivity.java
 import com.example.shipperapplication.api.RetrofitInterface;
 import com.example.shipperapplication.model.Driver;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,7 +33,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
     private RetrofitInterface retrofitInterface;
     //private static final String BASE_URL = "http://10.0.2.2:3001/";
-    private static final String BASE_URL = "http://192.168.1.7:3001/";
+    private static final String BASE_URL = "http://192.168.1.2:3001/";
     private MaterialButton btnLogin, btnLinkToRegister, btnForgotPass;
     private TextInputEditText inputUsername, inputPassword;
 
@@ -96,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
                     // Chuyển sang màn hình ShipperPanelActivity
                     Intent intent = new Intent(MainActivity.this, ShipperPanelBottomNavigationActivity.class);
+                    intent.putExtra("delivery_id",String.valueOf(result.getId()));
                     startActivity(intent);
                     finish();
                 } else if (response.code() == 401) {

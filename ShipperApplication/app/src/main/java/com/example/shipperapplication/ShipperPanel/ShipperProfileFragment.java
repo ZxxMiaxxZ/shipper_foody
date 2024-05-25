@@ -15,7 +15,7 @@ import com.example.shipperapplication.model.Driver;
 import com.example.shipperapplication.model.DriverResponse;
 import com.example.shipperapplication.R;
 import com.example.shipperapplication.api.RetrofitInterface;
-import com.example.shipperapplication.SharedPreferencesManager;
+import com.example.shipperapplication.Activity.SharedPreferencesManager;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.HashMap;
@@ -29,7 +29,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ShipperProfileFragment extends Fragment {
     private RetrofitInterface retrofitInterface;
     //private static final String BASE_URL = "http://10.0.2.2:3001/";
-    private static final String BASE_URL = "http://192.168.1.7:3001/";
+    private static final String BASE_URL = "http://192.168.1.2:3001/";
+    //private static final String BASE_URL = "http://192.168.1.7:3001/";
     private String authToken;
 
     private Button btnEdit;
