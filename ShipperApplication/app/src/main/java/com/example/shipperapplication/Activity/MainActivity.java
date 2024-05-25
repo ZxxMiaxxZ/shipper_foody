@@ -1,4 +1,4 @@
-package com.example.shipperapplication;
+package com.example.shipperapplication.Activity;
 import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.example.shipperapplication.R;
 import com.example.shipperapplication.api.RetrofitInterface;
 import com.example.shipperapplication.model.Driver;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
     private RetrofitInterface retrofitInterface;
     //private static final String BASE_URL = "http://10.0.2.2:3001/";
-    private static final String BASE_URL = "http://192.168.1.7:3001/";
+    private static final String BASE_URL = "http://192.168.1.2:3001/";
     private MaterialButton btnLogin, btnLinkToRegister, btnForgotPass;
     private TextInputEditText inputUsername, inputPassword;
 

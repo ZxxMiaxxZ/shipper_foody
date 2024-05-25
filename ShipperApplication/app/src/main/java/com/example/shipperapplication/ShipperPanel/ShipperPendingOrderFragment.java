@@ -23,13 +23,19 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.shipperapplication.Factory.ChatRoomFactory;
+import com.example.shipperapplication.Factory.ChatRoomFactoryImpl;
 import com.example.shipperapplication.R;
-import com.example.shipperapplication.SharedPreferencesManager;
+import com.example.shipperapplication.Activity.SharedPreferencesManager;
 import com.example.shipperapplication.api.RetrofitInterface;
+import com.example.shipperapplication.model.ChatRoom;
 import com.example.shipperapplication.model.Item;
+import com.example.shipperapplication.model.Message;
 import com.example.shipperapplication.model.OrderDetails;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -37,6 +43,7 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,7 +57,8 @@ public class ShipperPendingOrderFragment extends Fragment {
 
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
 
-    private static final String BASE_URL = "http://10.0.2.2:3001/";
+    private static final String BASE_URL = "http://192.168.1.2:3001/";
+    //private static final String BASE_URL = "http://10.0.2.2:3001/";
     private TextView edit_username, edit_phone, edit_location_cus, edit_location_res, edit_note, edit_total;
     private Button btn_Accept, btn_Reject;
     private String authToken;
@@ -171,6 +179,7 @@ public class ShipperPendingOrderFragment extends Fragment {
                 Toast.makeText(requireContext(), "Failed to accept order: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+        createChatRoomAndAddParticipants("user1","user2");
     }
     private void showAccepttOrderInfo() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
@@ -298,5 +307,20 @@ public class ShipperPendingOrderFragment extends Fragment {
         }
     }
 
+    private void createChatRoomAndAddParticipants(String userId1, String userId2) {
+        DatabaseReference chatRoomsRef = FirebaseDatabase.getInstance().getReference("chats");
+        String chatRoomId = chatRoomsRef.push().getKey();
 
+        Map<String, Boolean> participants = new HashMap<>();
+        participants.put(userId1, true);
+        participants.put(userId2, true);
+
+        Map<String, Message> messages = new HashMap<>();
+
+        ChatRoomFactory chatRoomFactory = new ChatRoomFactoryImpl();
+        ChatRoom newChatRoom = chatRoomFactory.createChatRoom("New Chat Room", participants, messages);
+
+        chatRoomsRef.child(chatRoomId).setValue(newChatRoom);
+
+    }
 }

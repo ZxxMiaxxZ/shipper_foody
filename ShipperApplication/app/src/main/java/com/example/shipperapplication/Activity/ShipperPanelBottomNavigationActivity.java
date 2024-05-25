@@ -1,4 +1,4 @@
-package com.example.shipperapplication;
+package com.example.shipperapplication.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -6,8 +6,9 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.shipperapplication.R;
+import com.example.shipperapplication.ShipperPanel.ChatFragment;
 import com.example.shipperapplication.ShipperPanel.ShipperHomeFragment;
-import com.example.shipperapplication.ShipperPanel.ShipperOrderFragment;
 import com.example.shipperapplication.ShipperPanel.ShipperPendingOrderFragment;
 import com.example.shipperapplication.ShipperPanel.ShipperProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -40,7 +41,7 @@ public class ShipperPanelBottomNavigationActivity extends AppCompatActivity impl
                 fragment = new ShipperPendingOrderFragment();
                 break;
             case R.id.Order:
-                fragment = new ShipperOrderFragment();
+                fragment = new ChatFragment();
                 break;
             case R.id.shipperProfile:
                 fragment = new ShipperProfileFragment();

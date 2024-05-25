@@ -1,22 +1,16 @@
-package com.example.shipperapplication;
-
-import static android.content.ContentValues.TAG;
+package com.example.shipperapplication.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.shipperapplication.R;
 import com.example.shipperapplication.api.RetrofitInterface;
 import com.example.shipperapplication.model.Driver;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.HashMap;
 
